@@ -12,6 +12,7 @@ public class App {
     //route to our homepage
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("stylist", request.session().attribute("stylist"));
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -21,7 +22,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
       Stylist newStylist = new Stylist(name);
-      request.session().attribute("task", newTask);
+      request.session().attribute("stylist", newStylist);
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
