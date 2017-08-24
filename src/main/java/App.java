@@ -4,6 +4,8 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
 
+
+
 public class App {
   public static void main(String[] args) {
     staticFileLocation("/public");
@@ -23,7 +25,7 @@ public class App {
 
       ArrayList<Stylist> stylists = request.session().attribute("stylists");
       if (stylists == null) {
-      stylists = new ArrayList<Stylist>();
+      stylist = new ArrayList<Stylist>();
       request.session().attribute("stylists", stylists);
       }
 
