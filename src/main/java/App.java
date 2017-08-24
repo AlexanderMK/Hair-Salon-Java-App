@@ -20,9 +20,17 @@ public class App {
     //sends new stylists data to db
     post("/stylists", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+
+      ArrayList<Stylist> stylists = request.session().attribute("stylists");
+      if (stylists == null) {
+      stylists = new ArrayList<Stylist>();
+      request.session().attribute("stylists", stylists);
+      }
+
       String name = request.queryParams("name");
       Stylist newStylist = new Stylist(name);
       request.session().attribute("stylist", newStylist);
+
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
