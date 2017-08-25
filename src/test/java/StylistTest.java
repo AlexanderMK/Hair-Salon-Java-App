@@ -41,4 +41,13 @@ public class StylistTest {
     Stylist testStylist = new Stylist("Xena");
     assertEquals(1, testStylist.getId());
   }
+
+//locate a stylist using a unique id
+  @Test
+  public void find_returnsStylistWithSameId_secondStylist() {
+    Stylist.clear();
+    Stylist firstStylist = new Stylist("Xena");
+    Category secondStylist = new Stylist("Rose");
+    assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
+  }
 }
