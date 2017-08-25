@@ -17,4 +17,13 @@ public class StylistTest {
     Category testCategory = new Category("Xena");
     assertEquals("Xena", testCategory.getName());
   }
+
+//testing listing of all Stylist objects
+  @Test
+  public void all_returnsAllInstancesOfStylist_true() {
+    Stylist firstStylist = new Stylist("Xena");
+    Stylist secondStylist = new Stylist("Rose");
+    assertEquals(true, Stylist.all().contains(firstStylist));
+    assertEquals(true, Stylist.all().contains(secondStylist));
+  }
 }
