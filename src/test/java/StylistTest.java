@@ -27,4 +27,12 @@ public class StylistTest {
     assertEquals("Straightforward, elegant style", stylist.getDescription());
     }
 
+    //clears the test database
+    @After
+    public void tearDown() {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "DELETE FROM tasks *;";
+     con.createQuery(sql).executeUpdate();
+      }
+    }
 }
