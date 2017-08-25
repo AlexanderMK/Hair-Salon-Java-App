@@ -53,7 +53,6 @@ public class App {
       String name = request.queryParams("name");
       //String description = request.queryParams("description");
       Client newClient = new Client(name);
-      clients.add(newClient);
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
