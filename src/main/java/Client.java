@@ -5,6 +5,7 @@ import org.sql2o.*;
 public class Client {
   private String name;
   private String description;
+  private in id;
 
   public Client(String name) {
     this.name = name;
@@ -21,4 +22,7 @@ public class Client {
   public String getDesciption() {
     return description;
   }
-}
+
+//return unique id for client
+  public int get
+  }
