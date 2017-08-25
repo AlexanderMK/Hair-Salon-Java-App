@@ -39,6 +39,13 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    //route to show all clients
+    get("/clients", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("clients", Client.all());
+      model.put("template", "templates/tasks.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     //sends new stylists data to db
     post("/clients", (request, response) -> {
