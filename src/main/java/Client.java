@@ -1,30 +1,45 @@
 import java.util.ArrayList;
-import org.sql2o.*;
+import java.util.List;
 
 
 public class Client {
-  private String name;
-  private String description;
-  private in id;
+  private String mName;
+  private String mDescription;
+  private static ArrayList<Client> instances = new ArrayList<Client>();
+  private int mId;
 
   public Client(String name) {
-    this.name = name;
-    this.description = description;
+    mName = name;
+    //mDescription = description;
+    instances.add(this);
+    mId = instances.size();
+
   }
 
 
 //get the name of the stylist
   public String getName() {
-    return name;
+    return mName;
   }
 
 //return name of stylist as a String
   public String getDesciption() {
-    return description;
+    return mDescription;
   }
 
 //return unique id for client
-  public int getId {
-    return id;
+  public int getId() {
+    return mId;
   }
+
+  public static void clear() {
+    instances.clear();
+  }
+
+  public static List<Client> all() {
+    return instances;
+  }
+  public static Client find(int id) {
+  return instances.get(id - 1);
+}
 }
