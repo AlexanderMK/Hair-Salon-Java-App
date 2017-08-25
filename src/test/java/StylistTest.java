@@ -34,4 +34,11 @@ public class StylistTest {
     Stylist.clear();
     assertEquals(Stylist.all().size(), 0);
   }
+
+//get id attributes of all stylists
+  @Test
+  public void getId_stylistsInstantiateWithAnId_1() {
+    Stylist testStylist = new Stylist("Xena");
+    assertEquals(1, testStylist.getId());
+  }
 }
