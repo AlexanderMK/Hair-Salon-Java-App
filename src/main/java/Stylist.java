@@ -5,12 +5,14 @@ public class Stylist {
   private String mName;
   private static List<Stylist> instances = new ArrayList<Stylist>();
   private int mId;
+  private List<Client> mClient;
 
   //logic for initial instantiation
   public Stylist(String name) {
     mName = name;
     instances.add(this);
     mId = instances.size();
+    mClient = new ArrayList<Client>();
   }
 
   //give a stylist a name
@@ -36,5 +38,10 @@ public class Stylist {
   //locating a stylist using id
   public static Stylist find(int id) {
     return instances.get(id - 1);
+  }
+
+  //listing clients under stylists
+  public List<Client> getClients() {
+    return mClient;
   }
 }
