@@ -50,12 +50,6 @@ public class App {
     //sends new stylists data to db
     post("/clients", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-
-      ArrayList<Client> clients = request.session().attribute("clients");
-      if (clients == null) {
-        clients = new ArrayList<Client>();
-        request.session().attribute("clients", clients);
-      }
       String name = request.queryParams("name");
       //String description = request.queryParams("description");
       Client newClient = new Client(name);
