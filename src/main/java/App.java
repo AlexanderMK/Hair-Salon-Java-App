@@ -105,6 +105,17 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    //route to post new client to a stylist
+    post("/clients", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("stylistId")));
+      String name = request.queryParams("name");
+      Client newClient = new Client(name);
+      stylist.addClient(newClient);
+      model.put("stylist", stylist);
+      model.put("template", "templates/stylist-client-success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   }
 }
