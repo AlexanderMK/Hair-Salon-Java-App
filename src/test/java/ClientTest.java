@@ -42,7 +42,7 @@ public class ClientTest {
     public void getId_categoriesInstantiateWithAnId_1() {
     Category testCategory = new Category("Home");
     testCategory.save();
-    assertTrue(testCategory.getId() > 0);
+    assertTrue(testCategory.getId() >0);
     }
 
     //clears the test database
