@@ -27,11 +27,18 @@ public class StylistTest {
     assertEquals("Straightforward, elegant style", stylist.getDescription());
     }
 
+    //check if if properties returned are similar
+    @Test
+    public void equals_returnsTrueIfPropertiesAreTheSame_true() {
+    Stylist secondStylist = new Stylist("Xena", "Straightforward, elegant style");
+    assertTrue(stylist.equals(secondStylist));
+    }
+
     //clears the test database
     @After
     public void tearDown() {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "DELETE FROM tasks *;";
+        String sql = "DELETE FROM stylists *;";
      con.createQuery(sql).executeUpdate();
       }
     }
