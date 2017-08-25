@@ -1,9 +1,10 @@
 public class Stylist {
   private String name;
+  private String description;
 
-  public Stylist(String name) {
+  public Stylist(String name, String description) {
     this.name = name;
-    trhis.description = description;
+    this.description = description;
   }
 
 

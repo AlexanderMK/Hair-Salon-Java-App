@@ -42,7 +42,8 @@ public class App {
         request.session().attribute("stylists", stylists);
       }
       String name = request.queryParams("name");
-      Stylist newStylist = new Stylist(name);
+      String description = request.queryParams("description");
+      Stylist newStylist = new Stylist(name, description);
       stylists.add(newStylist);
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
