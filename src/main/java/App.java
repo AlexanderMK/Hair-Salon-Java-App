@@ -27,24 +27,32 @@ public class App {
     //route to our homepage
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("stylist", request.session().attribute("stylist"));
+      model.put("clients", request.session().attribute("clients"));
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    //route to create new clients
+    get("clients/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/client-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
     //sends new stylists data to db
-    post("/stylists", (request, response) -> {
+    post("/clients", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
-      ArrayList<Stylist> stylists = request.session().attribute("stylists");
-      if (stylists == null) {
-        stylists = new ArrayList<Stylist>();
-        request.session().attribute("stylists", stylists);
+      ArrayList<Client> clients = request.session().attribute("clients");
+      if (clients == null) {
+        clients = new ArrayList<Client>();
+        request.session().attribute("clients", clients);
       }
       String name = request.queryParams("name");
-      String description = request.queryParams("description");
-      Stylist newStylist = new Stylist(name, description);
-      stylists.add(newStylist);
+      //String description = request.queryParams("description");
+      Client newClient = new Client(name);
+      clients.add(newClient);
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
