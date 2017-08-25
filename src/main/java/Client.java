@@ -32,6 +32,7 @@ public class Client {
     return mId;
   }
 
+//Lists all clients
   public static void clear() {
     instances.clear();
   }

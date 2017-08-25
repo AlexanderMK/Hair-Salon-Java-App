@@ -31,7 +31,7 @@ public class App {
 
     //route to create new clients
     get("clients/new", (request, response) -> {
-      Map<String, bject> model = new HashMap<String, Object>();
+      Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/client-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -49,13 +49,12 @@ public class App {
     post("/clients", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
-      //String description = request.queryParams("description");
       Client newClient = new Client(name);
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //
+    //diplays clients by their unique ids
     get("/clients/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Client client = Client.find(Integer.parseInt(request.params(":id")));
