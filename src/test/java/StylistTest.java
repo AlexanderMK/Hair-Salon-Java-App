@@ -58,4 +58,13 @@ public class StylistTest {
     Stylist testStylist = new Stylist("Xena");
     assertEquals(0, testStylist.getStylist().size());
   }
+
+//Adding cleints to Stylist
+@Test
+  public void addClient_addsClientToList_true() {
+    Stylist testStylist = new Stylist("Xena");
+    Client testClient = new Client("Jane");
+    testStylist.addStylist(testClient);
+    assertTrue(testStylist.getClients().contains(testClient)); 
+  }
 }
