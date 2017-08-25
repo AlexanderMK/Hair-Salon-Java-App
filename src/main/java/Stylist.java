@@ -5,19 +5,19 @@ public class Stylist {
   private String mName;
   private static List<Stylist> instances = new ArrayList<Stylist>();
   private int mId;
-  private List<Client> mClient;
+  private List<Client> mClients;
 
   //logic for initial instantiation
   public Stylist(String name) {
     mName = name;
     instances.add(this);
     mId = instances.size();
-    mClient = new ArrayList<Client>();
+    mClients = new ArrayList<Client>();
   }
 
   //give a stylist a name
   public String getName() {
-    return mName;instantiating a client object inside a stylist object
+    return mName;
   }
 
   //returns all instances of a stylist
@@ -42,11 +42,11 @@ public class Stylist {
 
   //listing clients under stylists
   public List<Client> getClients() {
-    return mClient;
+    return mClients;
   }
 
   //adding a client to a stylists
   public void addClient(Client client) {
-    mClient.add(clients)
+    mClients.add(client);
   }
 }

@@ -47,7 +47,7 @@ public class StylistTest {
   public void find_returnsStylistWithSameId_secondStylist() {
     Stylist.clear();
     Stylist firstStylist = new Stylist("Xena");
-    Category secondStylist = new Stylist("Rose");
+    Stylist secondStylist = new Stylist("Rose");
     assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
   }
 
@@ -65,6 +65,6 @@ public class StylistTest {
     Stylist testStylist = new Stylist("Xena");
     Client testClient = new Client("Jane");
     testStylist.addStylist(testClient);
-    assertTrue(testStylist.getClients().contains(testClient)); 
+    assertTrue(testStylist.getClients().contains(testClient));
   }
 }
