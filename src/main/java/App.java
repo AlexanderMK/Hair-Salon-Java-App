@@ -56,7 +56,7 @@ public class App {
     }, new VelocityTemplateEngine());
 
     //
-    get("/clients/:id", (request, response) -> {
+    get("clients/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Client client = Client.find(Integer.parseInt(request.params(":id")));
       model.put("client", client);
