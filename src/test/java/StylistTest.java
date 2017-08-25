@@ -50,4 +50,12 @@ public class StylistTest {
     Category secondStylist = new Stylist("Rose");
     assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
   }
+
+//instantiating a client object inside a stylist object
+  @Test
+  public void getClients_initiallyReturnsEmptyList_ArrayList() {
+    Stylist.clear();
+    Stylist testStylist = new Stylist("Xena");
+    assertEquals(0, testStylist.getStylist().size());
+  }
 }
