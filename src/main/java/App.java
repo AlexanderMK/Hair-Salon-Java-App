@@ -4,10 +4,23 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
 
-
+import java.util.ArrayList;
 
 public class App {
   public static void main(String[] args) {
+
+    //logic for Heroku to assign different ports
+    ProcessBuilder process = new ProcessBuilder();
+     Integer port;
+     if (process.environment().get("PORT") != null) {
+         port = Integer.parseInt(process.environment().get("PORT"));
+     } else {
+         port = 4567;
+     }
+
+    setPort(port);
+
+    //layout route
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
@@ -25,14 +38,12 @@ public class App {
 
       ArrayList<Stylist> stylists = request.session().attribute("stylists");
       if (stylists == null) {
-      stylist = new ArrayList<Stylist>();
-      request.session().attribute("stylists", stylists);
+        stylists = new ArrayList<Stylist>();
+        request.session().attribute("stylists", stylists);
       }
-
       String name = request.queryParams("name");
       Stylist newStylist = new Stylist(name);
-      request.session().attribute("stylist", newStylist);
-
+      stylists.add(newStylist);
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
