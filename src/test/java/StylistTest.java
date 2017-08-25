@@ -15,4 +15,10 @@ public class StylistTest {
     assertEquals("Xena", stylist.getName());
     }
 
+    //check if description of stylist returns as a String
+    @Test
+    public void getDescription_returnsDescriptionOfStylist_String() {
+    assertEquals("Straightforward, elegant style", stylist.getDescription());
+    }
+
 }
