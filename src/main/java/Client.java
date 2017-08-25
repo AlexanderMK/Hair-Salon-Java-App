@@ -24,5 +24,7 @@ public class Client {
   }
 
 //return unique id for client
-  public int get
+  public int getId {
+    return id;
   }
+}
