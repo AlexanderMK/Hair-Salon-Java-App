@@ -17,7 +17,7 @@ public class Stylist {
 
   //give a stylist a name
   public String getName() {
-    return mName;
+    return mName;instantiating a client object inside a stylist object
   }
 
   //returns all instances of a stylist
@@ -43,5 +43,10 @@ public class Stylist {
   //listing clients under stylists
   public List<Client> getClients() {
     return mClient;
+  }
+
+  //adding a client to a stylists
+  public void addClient(Client client) {
+    mClient.add(clients)
   }
 }
