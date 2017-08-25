@@ -26,4 +26,12 @@ public class StylistTest {
     assertEquals(true, Stylist.all().contains(firstStylist));
     assertEquals(true, Stylist.all().contains(secondStylist));
   }
+
+//clearing all instances
+  @Test
+  public void clear_emptiesAllStylistFromList_0() {
+    Stylist testStylist = new Stylist("Xena");
+    Stylist.clear();
+    assertEquals(Stylist.all().size(), 0);
+  }
 }
