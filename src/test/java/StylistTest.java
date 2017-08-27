@@ -67,7 +67,7 @@ public class StylistTest {
   }
 
 //Adding cleints to Stylist
-@Test
+  @Test
   public void addClient_addsClientToList_true() {
     Stylist testStylist = new Stylist("Xena");
     Client testClient = new Client("Jane");
@@ -75,7 +75,15 @@ public class StylistTest {
     assertTrue(testStylist.getClients().contains(testClient));
   }
 
-//after annotatin for sql tests
+//comparing Stylist objects
+  @Test
+  public void equals_returnsTrueIfNamesAretheSame() {
+    Stylist firstStylist = new Stylist("Ann");
+    Stylist secondStylist = new Stylist("Ann");
+    assertTrue(firstStylist.equals(secondStylist));
+  }
+
+//clears the test database
   @After
     public void tearDown() {
       try(Connection con = DB.sql2o.open()) {
