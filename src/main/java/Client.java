@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-
+import org.sql2o.*;
 
 public class Client {
   private String name;
@@ -29,7 +29,7 @@ public class Client {
 
 //return unique id for client
   public int getId() {
-    returnid;
+    return id;
   }
 
 //Lists all clients
@@ -37,9 +37,12 @@ public class Client {
     //instances.clear();
   //}
 
-  //public static List<Client> all() {
-    //return instances;
-  //}
+  public static List<Client> all() {
+    String sql = "SELECT Id, name from clients";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Client.class);
+    }
+  }
 
   //public static Client find(int id) {
   //return instances.get(id - 1);
