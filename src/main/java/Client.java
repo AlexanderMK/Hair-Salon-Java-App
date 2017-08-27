@@ -57,14 +57,14 @@ public class Client {
   }
 
 //method to overide equals method
-  @Overide
+  @Override
   public boolean equals(Object otherClient) {
     if (!(otherClient instanceof Client)) {
       return false;
     } else {
       newClient = (Client) otherClient;
       return this.getName().equals(newClient.getName()) &&
-              this.getId() == newTask.getId();
+              this.getId() == newClient.getId();
     }
   }
 
