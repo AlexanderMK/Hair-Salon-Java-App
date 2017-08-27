@@ -49,7 +49,7 @@ public class Client {
   //return instances.get(id - 1);
   //}
 
-  //method to overide equals method
+//method to overide equals method
   @Overide
   public boolean equals(Object otherClient) {
     if (!(otherClient instanceof Client)) {
@@ -59,5 +59,17 @@ public class Client {
       return this.getName().equals(newClient.getName());
     }
   }
+
+//save method for new new objects after Overide
+  public void save() {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "INSERT INTO clients (name) VALUES (:name)";
+    con.createQuery(sql)
+      .addParameter("name", this.name)
+      .executeUpdate();
+    }
+  }
+
+
 
 }
