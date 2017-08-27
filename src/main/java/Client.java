@@ -19,17 +19,17 @@ public class Client {
 
 //get the name of the stylist
   public String getName() {
-    return mName;
+    return name;
   }
 
 //return name of stylist as a String
   public String getDesciption() {
-    return mDescription;
+    return description;
   }
 
 //return unique id for client
   public int getId() {
-    return mId;
+    return id;
   }
 
 //Lists all clients
@@ -37,10 +37,11 @@ public class Client {
     instances.clear();
   }
 
-  public static List<Client> all() {
-    return instances;
-  }
-  public static Client find(int id) {
-  return instances.get(id - 1);
-}
+  //public static List<Client> all() {
+    //return instances;
+  //}
+
+  //public static Client find(int id) {
+  //return instances.get(id - 1);
+  //}
 }
