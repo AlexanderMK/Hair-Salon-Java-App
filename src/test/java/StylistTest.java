@@ -29,9 +29,11 @@ public class StylistTest {
   @Test
   public void all_returnsAllInstancesOfStylist_true() {
     Stylist firstStylist = new Stylist("Xena");
+    firstStylist.save();
     Stylist secondStylist = new Stylist("Rose");
-    assertEquals(true, Stylist.all().contains(firstStylist));
-    assertEquals(true, Stylist.all().contains(secondStylist));
+    secondStylist.save();
+    assertEquals(true, Stylist.all().get(0).equals(firstStylist));
+    assertEquals(true, Stylist.all().get(0).equals(secondStylist));
   }
 
 //clearing all instances
