@@ -39,10 +39,10 @@ public class ClientTest {
 
     //assigning unique id to a client
     @Test
-    public void getId_categoriesInstantiateWithAnId_1() {
-    Category testCategory = new Category("Home");
-    testCategory.save();
-    assertTrue(testCategory.getId() > 0);
+    public void getId_clientsInstantiateWithAnId_1() {
+    Client testClient = new Client("Xena");
+    myClient.save();
+    assertTrue(myClient.getId() > 0);
     }
 
     //test to compare objects retrieved from DB
