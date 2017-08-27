@@ -11,7 +11,7 @@ public class Client {
   public Client(String name) {
     mName = name;
     //mDescription = description;
-    instances.add(this);
+
     mId = instances.size();
 
   }
