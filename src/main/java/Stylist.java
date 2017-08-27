@@ -2,17 +2,16 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Stylist {
-  private String mName;
-  private static List<Stylist> instances = new ArrayList<Stylist>();
-  private int mId;
+  private String name;
+  private int id;
   private List<Client> mClients;
 
   //logic for initial instantiation
   public Stylist(String name) {
-    mName = name;
+    this.name = name;
     instances.add(this);
-    mId = instances.size();
-    mClients = new ArrayList<Client>();
+    //mId = instances.size();
+    //mClients = new ArrayList<Client>();
   }
 
   //give a stylist a name
