@@ -37,6 +37,7 @@ public class Client {
     //instances.clear();
   //}
 
+//SQL command to retrieve info from DB
   public static List<Client> all() {
     String sql = "SELECT Id, name from clients";
     try(Connection con = DB.sql2o.open()) {
@@ -47,4 +48,16 @@ public class Client {
   //public static Client find(int id) {
   //return instances.get(id - 1);
   //}
+
+  //method to overide equals method
+  @Overide
+  public boolean equals(Object otherClient) {
+    if (!(otherClient instanceof Client)) {
+      return false;
+    } else {
+      newClient = (Client) otherClient;
+      return this.getName().equals(newClient.getName());
+    }
+  }
+
 }
