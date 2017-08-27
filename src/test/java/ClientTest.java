@@ -39,7 +39,7 @@ public class ClientTest {
 
     //assigning unique id to a client
     @Test
-    public void getId_clientsInstantiateWithAnId_1() {
+    public void getId_clientsInstantiateWithAnID() {
     Client testClient = new Client("Xena");
     myClient.save();
     assertTrue(myClient.getId() > 0);

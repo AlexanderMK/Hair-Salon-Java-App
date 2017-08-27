@@ -56,7 +56,8 @@ public class Client {
       return false;
     } else {
       newClient = (Client) otherClient;
-      return this.getName().equals(newClient.getName());
+      return this.getName().equals(newClient.getName()) &&
+              this.getId() == newTask.getId();
     }
   }
 
