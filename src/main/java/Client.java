@@ -3,16 +3,16 @@ import java.util.List;
 
 
 public class Client {
-  private String mName;
-  private String mDescription;
+  private String name;
+  private String description;
   private static ArrayList<Client> instances = new ArrayList<Client>();
-  private int mId;
+  private int id;
 
   public Client(String name) {
-    mName = name;
+    this.name = name;
     //mDescription = description;
 
-    mId = instances.size();
+    //mId = instances.size();
 
   }
 
