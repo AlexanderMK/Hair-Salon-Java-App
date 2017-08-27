@@ -45,11 +45,28 @@ public class ClientTest {
     assertTrue(testCategory.getId() > 0);
     }
 
+    //test to compare objects retrieved from DB
+    @Test
+    public void equals_returnsTrueIfNamesAretheSame() {
+    Client firstClient = new Client("Xena");
+    Client secondClient = new Client("Jane");
+    assertTrue(firstClient.equals(secondClient));
+    }
+
+
+    //test to save new objects in the DB
+    @Test
+    public void save_returnsTrueIfNamesAretheSame() {
+    Client myClient = new Client("Xena");
+    myClient.save();
+    assertTrue(Client.all().get(0).equals(myClient));
+    }
+
     //clears the test database
     @After
     public void tearDown() {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "DELETE FROM client *;";
+        String sql = "DELETE FROM clients *;";
      con.createQuery(sql).executeUpdate();
       }
     }
