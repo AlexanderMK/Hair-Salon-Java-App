@@ -33,9 +33,9 @@ public class Client {
   }
 
 //Lists all clients
-  public static void clear() {
-    instances.clear();
-  }
+  //public static void clear() {
+    //instances.clear();
+  //}
 
   //public static List<Client> all() {
     //return instances;
