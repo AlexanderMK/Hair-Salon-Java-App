@@ -83,6 +83,14 @@ public class StylistTest {
     assertTrue(firstStylist.equals(secondStylist));
   }
 
+//test to save new Stylist objects
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Stylist myStylist = new Stylist("Ann");
+    myStylist.save();
+    assertTrue(Stylist.all().get(0).equals(myStylist));
+  }
+
 //clears the test database
   @After
     public void tearDown() {
