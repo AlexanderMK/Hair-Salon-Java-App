@@ -68,4 +68,15 @@ public class Stylist {
       return this.getName().equals(newStylist.getName());
     }
   }
+
+  //method to save new stylist
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO stylists (name) VALUES (:name)";
+      con.createQuery(sql)
+          .addParameter("name", this.name)
+          .executeUpdate();
+      }
+    }
+
 }
