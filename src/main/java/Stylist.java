@@ -4,34 +4,34 @@ import java.util.ArrayList;
 public class Stylist {
   private String name;
   private int id;
-  private List<Client> mClients;
+  //private List<Client> mClients;
 
   //logic for initial instantiation
   public Stylist(String name) {
     this.name = name;
-    instances.add(this);
+    //instances.add(this);
     //mId = instances.size();
     //mClients = new ArrayList<Client>();
   }
 
   //give a stylist a name
   public String getName() {
-    return mName;
+    return name;
   }
 
   //returns all instances of a stylist
   public static List<Stylist> all() {
-    return instances;
+    //return instances;
   }
 
   //clear all instances of a stylist
-  public static void clear() {
-    instances.clear();
-  }
+  //public static void clear() {
+    //instances.clear();
+  //}
 
   //getting id for a stylist
   public int getId() {
-    return mId;
+    return id;
   }
 
   //locating a stylist using id
