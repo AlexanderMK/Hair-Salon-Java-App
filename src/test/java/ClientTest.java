@@ -62,6 +62,15 @@ public class ClientTest {
     assertTrue(Client.all().get(0).equals(myClient));
     }
 
+    //test to assign unique ids
+    @Test
+    public void save_assignsIdToObject() {
+    Client myClient = new Client("Xena");
+    myClient.save();
+    Client savedClient = Client.all().get(0);
+    assertEquals(myClient.getId(), savedClient.getId());
+    }
+
     //clears the test database
     @After
     public void tearDown() {
