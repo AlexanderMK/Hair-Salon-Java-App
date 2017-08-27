@@ -33,7 +33,7 @@ public class StylistTest {
     Stylist secondStylist = new Stylist("Rose");
     secondStylist.save();
     assertEquals(true, Stylist.all().get(0).equals(firstStylist));
-    assertEquals(true, Stylist.all().get(0).equals(secondStylist));
+    assertEquals(true, Stylist.all().get(1).equals(secondStylist));
   }
 
 //clearing all instances
@@ -91,6 +91,15 @@ public class StylistTest {
     Stylist myStylist = new Stylist("Ann");
     myStylist.save();
     assertTrue(Stylist.all().get(0).equals(myStylist));
+  }
+
+//assigning unique id of stylist in DB
+  @Test
+  public void save_assignsIdToObject() {
+    Stylist myStylist = new Stylist("Ann");
+    myStylist.save();
+    Stylist savedStylist = Stylist.all().get(0);
+    assertEquals(myStylist.getId(), savedStylist.getId());
   }
 
 //clears the test database
