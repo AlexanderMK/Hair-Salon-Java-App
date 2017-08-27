@@ -29,7 +29,7 @@ public class Client {
 
 //return unique id for client
   public int getId() {
-    return id;
+    returnid;
   }
 
 //Lists all clients
