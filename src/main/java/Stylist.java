@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import org.sql2o.*;
 
 public class Stylist {
   private String name;
@@ -47,5 +48,13 @@ public class Stylist {
   //adding a client to a stylists
   public void addClient(Client client) {
     mClients.add(client);
+  }
+
+  //method to return all stylists
+  public static List<Stylist> all() {
+    String sql = "SELECT id, name FROM stylists";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Stylist.class);
+    }
   }
 }
