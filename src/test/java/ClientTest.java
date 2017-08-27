@@ -71,6 +71,16 @@ public class ClientTest {
     assertEquals(myClient.getId(), savedClient.getId());
     }
 
+    //test to find clients by ID
+    @Test
+    public void find_returnsClientWithSameId_secondTask() {
+    Client firstClient = new Client("Xena");
+    firstClient.save();
+    Client secondClient = new Client("Jane");
+    secondClient.save();
+    assertEquals(Client.find(secondClient.getId()), secondClient);
+    }
+
     //clears the test database
     @After
     public void tearDown() {
