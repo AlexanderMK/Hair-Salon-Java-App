@@ -4,7 +4,7 @@ import org.sql2o.*;
 
 public class StylistTest {
 
-//bloack annotatin for sql 
+//bloack annotatin for sql
   @Before
       public void setUp() {
         DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/to_do_test", "alexander", "1234");
@@ -74,4 +74,16 @@ public class StylistTest {
     testStylist.addStylist(testClient);
     assertTrue(testStylist.getClients().contains(testClient));
   }
+
+//after annotatin for sql tests
+  @After
+    public void tearDown() {
+      try(Connection con = DB.sql2o.open()) {
+        String deleteClientsQuery = "DELETE FROM clients *;";
+        String deleteStylistsQuery = "DELETE FROM stylists *;";
+        con.createQuery(deleteClientsQuery).executeUpdate();
+        con.createQuery(deleteStylistsQuery).executeUpdate();
+      }
+    }
+
 }
