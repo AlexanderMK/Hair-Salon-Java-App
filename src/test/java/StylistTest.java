@@ -48,7 +48,8 @@ public class StylistTest {
   @Test
   public void getId_stylistsInstantiateWithAnId_1() {
     Stylist testStylist = new Stylist("Xena");
-    assertEquals(1, testStylist.getId());
+    testStylist.save();
+    assertEquals(testStylist.getId() > 0);
   }
 
 //locate a stylist using a unique id
