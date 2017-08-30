@@ -34,6 +34,11 @@ public class Client {
     return id;
   }
 
+//getter method for stylistId
+  public int getStylistId() {
+    return stylistId;
+  }
+
 //Lists all clients
   //public static void clear() {
     //instances.clear();
