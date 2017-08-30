@@ -115,7 +115,18 @@ public class StylistTest {
     assertEquals(savedClient.getStylistId(), myStylist.getId());
   }
 
-
+//test to retrieve all clients saved in a specific stylistId
+  @Test
+  public void getClients_retrievesALlClientsFromDatabase_clientsList() {
+    Stylist myStylist = new Stylist("Ann");
+    myStylist.save();
+    Client firstClient = new Client("Rose", myStylist.getId());
+    firstClient.save();
+    Client secondClient = new Client("Mary", myStylist.getId());
+    secondClient.save();
+    Client[] clients = new Client[] { firstClient, secondClient };
+    assertTrue(myStylist.getClients().containsAll(Arrays.asList(clients)));
+  }
 
 //clears the test database
   @After
