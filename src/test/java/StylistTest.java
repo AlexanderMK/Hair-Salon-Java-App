@@ -104,6 +104,17 @@ public class StylistTest {
     assertEquals(myStylist.getId(), savedStylist.getId());
   }
 
+//test to save stylistId into clients table
+  @Test
+  public void save_savesStylistIdIntoDB_true() {
+    Stylist myStylist = new Stylist("Rose");
+    myStylist.save();
+    Client myClient = new Client("Ann", myStylist.getId());
+    myClient.save();
+    Client savedClient = Client.find(myClient.getId());
+    assertEquals(savedClient.getStylistId(), myStylist.getId());
+  }
+
 
 
 //clears the test database
