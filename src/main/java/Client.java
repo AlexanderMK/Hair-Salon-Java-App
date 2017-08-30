@@ -7,9 +7,11 @@ public class Client {
   private String description;
   private static ArrayList<Client> instances = new ArrayList<Client>();
   private int id;
+  private int stylistId;
 
-  public Client(String name) {
+  public Client(String name, int stylistId) {
     this.name = name;
+    this.stylistId = stylistId;
     //mDescription = description;
 
     //mId = instances.size();
