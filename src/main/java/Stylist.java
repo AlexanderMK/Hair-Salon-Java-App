@@ -37,8 +37,14 @@ public class Stylist {
 
   //locating a stylist using id
   public static Stylist find(int id) {
-    return instances.get(id - 1);
-  }
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "SELECT * FROM stylists where id=:id";
+        Stylist stylist = con.createQuery(sql)
+          .addParameter("id", id)
+          .executeAndFetchFirst(Stylist.class);
+        return stylist;
+      }
+    }
 
   //listing clients under stylists
   public List<Client> getClients() {
@@ -73,7 +79,7 @@ public class Stylist {
   //method to save new stylist and assign same DB is
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO stylists (name) VALUES (:name)";
+      String sql = "INSERT INTO stylists(name) VALUES (:name)";
       this.id = (int) con.createQuery(sql, true)
           .addParameter("name", this.name)
           .executeUpdate()
