@@ -69,9 +69,10 @@ public class Client {
     if (!(otherClient instanceof Client)) {
       return false;
     } else {
-      newClient = (Client) otherClient;
+      Client newClient = (Client) otherClient;
       return this.getName().equals(newClient.getName()) &&
-              this.getId() == newClient.getId();
+              this.getId() == newClient.getId() &&
+              this.getStylistId() == newClient.getStylistId(;
     }
   }
 
