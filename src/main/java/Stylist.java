@@ -1,5 +1,5 @@
 import java.util.List;
-import java.util.ArrayList;
+;
 import org.sql2o.*;
 
 public class Stylist {
@@ -47,9 +47,9 @@ public class Stylist {
     }
 
   //listing clients under stylists
-  public List<Client> getClients() {
-    return mClients;
-  }
+  //public List<Client> getClients() {
+    //return mClients;
+  //}
 
   //adding a client to a stylists
   public void addClient(Client client) {
@@ -67,7 +67,7 @@ public class Stylist {
   //method to overide stylists objects
   @Override
   public boolean equals(Object otherStylist) {
-    if (!(otherStylist   instanceof Stylist)) {
+    if (!(otherStylist instanceof Stylist)) {
       return false;
     } else {
       Stylist newStylist = (Stylist) otherStylist;
@@ -86,5 +86,15 @@ public class Stylist {
           .getKey();
       }
     }
+
+  //method to retrieve all clients in a specific stylistId
+  public List<Task> getTasks() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM tasks where categoryId=:id";
+      return con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeAndFetch(Task.class);
+    }
+  }
 
 }
