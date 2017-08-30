@@ -78,9 +78,10 @@ public class Client {
 //save method for new new objects after Overide
   public void save() {
   try(Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO clients (name) VALUES (:name)";
+    String sql = "INSERT INTO clients (name, stylistId) VALUES (:name, stylistId)";
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
+      .addParameter("stylistId", this.stylistId)
       .executeUpdate()
       .getKey();
     }
