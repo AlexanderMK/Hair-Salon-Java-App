@@ -7,7 +7,7 @@ public class StylistTest {
 //bloack annotatin for sql
   @Before
       public void setUp() {
-        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/to_do_test", "alexander", "1234");
+        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", "alexander", "1234");
       }
 
 

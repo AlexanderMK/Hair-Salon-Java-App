@@ -1,5 +1,5 @@
 import java.util.List;
-;
+import java.util.ArrayList;
 import org.sql2o.*;
 
 public class Stylist {
@@ -20,10 +20,11 @@ public class Stylist {
     return name;
   }
 
+  //
   //returns all instances of a stylist
-  public static List<Stylist> all() {
+  //public static List<Stylist> all() {
     //return instances;
-  }
+  //}
 
   //clear all instances of a stylist
   //public static void clear() {
@@ -52,9 +53,9 @@ public class Stylist {
   //}
 
   //adding a client to a stylists
-  public void addClient(Client client) {
-    mClients.add(client);
-  }
+  //public void addClient(Client client) {
+    //mClients.add(client);
+  //}
 
   //method to return all stylists
   public static List<Stylist> all() {
@@ -88,12 +89,12 @@ public class Stylist {
     }
 
   //method to retrieve all clients in a specific stylistId
-  public List<Task> getTasks() {
+  public List<Client> getClients() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM tasks where categoryId=:id";
+      String sql = "SELECT * FROM clients where stylistId=:id";
       return con.createQuery(sql)
         .addParameter("id", this.id)
-        .executeAndFetch(Task.class);
+        .executeAndFetch(Client.class);
     }
   }
 

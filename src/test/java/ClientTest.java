@@ -13,14 +13,14 @@ public class ClientTest {
     //check if tests instatiates correctly
     @Test
     public void Client_instantiatesCorrectly_true() {
-      Stylist testClient = new Client("Xena");
+      Stylist testClient = new Client("Xena", 1);
       assertEquals(true, testStylist instanceof Client);
     }
 
     //check if name of stylist returns as a string
     @Test
     public void getName_returnsNameOfClient_String() {
-     Stylist testClient = new Client("Xena");
+     Stylist testClient = new Client("Xena", 1);
     assertEquals("Xena", testClient.getName());
     }
 
@@ -40,7 +40,7 @@ public class ClientTest {
     //assigning unique id to a client
     @Test
     public void getId_clientsInstantiateWithAnID() {
-    Client testClient = new Client("Xena");
+    Client testClient = new Client("Xena", 1);
     myClient.save();
     assertTrue(myClient.getId() > 0);
     }
@@ -48,7 +48,7 @@ public class ClientTest {
     //test to compare objects retrieved from DB
     @Test
     public void equals_returnsTrueIfNamesAretheSame() {
-    Client firstClient = new Client("Xena");
+    Client firstClient = new Client("Xena", 1);
     Client secondClient = new Client("Jane");
     assertTrue(firstClient.equals(secondClient));
     }
@@ -57,7 +57,7 @@ public class ClientTest {
     //test to save new objects in the DB
     @Test
     public void save_returnsTrueIfNamesAretheSame() {
-    Client myClient = new Client("Xena");
+    Client myClient = new Client("Xena", 1);
     myClient.save();
     assertTrue(Client.all().get(0).equals(myClient));
     }
@@ -65,7 +65,7 @@ public class ClientTest {
     //test to assign unique ids
     @Test
     public void save_assignsIdToObject() {
-    Client myClient = new Client("Xena");
+    Client myClient = new Client("Xena", 1);
     myClient.save();
     Client savedClient = Client.all().get(0);
     assertEquals(myClient.getId(), savedClient.getId());
@@ -74,7 +74,7 @@ public class ClientTest {
     //test to find clients by ID
     @Test
     public void find_returnsClientWithSameId_secondTask() {
-    Client firstClient = new Client("Xena");
+    Client firstClient = new Client("Xena", 1);
     firstClient.save();
     Client secondClient = new Client("Jane");
     secondClient.save();

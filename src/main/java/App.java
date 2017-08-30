@@ -25,6 +25,7 @@ public class App {
     //route to our homepage
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("stylists", Stylist.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -45,14 +46,14 @@ public class App {
     }, new VelocityTemplateEngine());
 
 
-    //sends new stylists data to db
-    post("/clients", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      String name = request.queryParams("name");
-      Client newClient = new Client(name);
-      model.put("template", "templates/success.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+    //sends new clients data to db
+    //post("/clients", (request, response) -> {
+      //Map<String, Object> model = new HashMap<String, Object>();
+      //String name = request.queryParams("name");
+      //Client newClient = new Client(name);
+      //model.put("template", "templates/success.vtl");
+      //return new ModelAndView(model, layout);
+    //}, new VelocityTemplateEngine());
 
     //diplays clients by their unique ids
     get("/clients/:id", (request, response) -> {
@@ -75,7 +76,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
       Stylist newStylist = new Stylist(name);
-      newStylist.save()
+      newStylist.save();
       model.put("template", "templates/stylist-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -111,7 +112,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("stylistId")));
       String name = request.queryParams("name");
-      Client newClient = new Client(name,,stylist.getId());
+      Client newClient = new Client(name, stylist.getId());
       newClient.save();
       model.put("stylist", stylist);
       model.put("template", "templates/stylist-client-success.vtl");
