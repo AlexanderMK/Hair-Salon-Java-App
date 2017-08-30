@@ -46,7 +46,7 @@ public class Client {
 
 //SQL command to retrieve info from DB
   public static List<Client> all() {
-    String sql = "SELECT Id, name from clients";
+    String sql = "SELECT Id, name, stylistId FROM clients";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Client.class);
     }
