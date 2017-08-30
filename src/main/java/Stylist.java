@@ -65,15 +65,16 @@ public class Stylist {
       return false;
     } else {
       Stylist newStylist = (Stylist) otherStylist;
-      return this.getName().equals(newStylist.getName());
+      return this.getName().equals(newStylist.getName()) &&
+            this.getId() == newStylist.getId();
     }
   }
 
-  //method to save new stylist
+  //method to save new stylist and assign same DB is
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO stylists (name) VALUES (:name)";
-      this,id = (int) con.createQuery(sql, true)
+      this.id = (int) con.createQuery(sql, true)
           .addParameter("name", this.name)
           .executeUpdate()
           .getKey();
