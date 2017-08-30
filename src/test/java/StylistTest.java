@@ -52,12 +52,13 @@ public class StylistTest {
     assertEquals(testStylist.getId() > 0);
   }
 
-//locate a stylist using a unique id
+//locate a stylist using a unique id from our DB
   @Test
   public void find_returnsStylistWithSameId_secondStylist() {
-    Stylist.clear();
     Stylist firstStylist = new Stylist("Xena");
+    firstStylist.save();
     Stylist secondStylist = new Stylist("Rose");
+    secondStylist.save();
     assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
   }
 
@@ -103,15 +104,7 @@ public class StylistTest {
     assertEquals(myStylist.getId(), savedStylist.getId());
   }
 
-//test to find objects in our DB
-  @Test
-  public void find_returnsStylistWithSameId_secondStylist() {
-    Stylist firstStylist = new Stylist("Ann");
-    firstStylist.save();
-    Stylist secondStylist = new Stylist("Rose");
-    secondStylist.save();
-    assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
-   }
+
 
 //clears the test database
   @After
